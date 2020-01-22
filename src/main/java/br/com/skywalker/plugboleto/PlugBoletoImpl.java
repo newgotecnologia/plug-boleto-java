@@ -1,5 +1,6 @@
 package br.com.skywalker.plugboleto;
 
+import br.com.skywalker.plugboleto.assignor.AssignorResource;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
@@ -36,5 +37,9 @@ class PlugBoletoImpl extends PlugBoleto {
     }
 
     // *****************************************************************************
+
+    public AssignorResource assignors() {
+        return new AssignorResource(retrofitInstance);
+    }
 
 }

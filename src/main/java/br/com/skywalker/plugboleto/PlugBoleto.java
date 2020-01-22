@@ -1,5 +1,7 @@
 package br.com.skywalker.plugboleto;
 
+import br.com.skywalker.plugboleto.assignor.AssignorResource;
+
 public abstract class PlugBoleto {
     private static final String SH_CNPJ_ENV_VAR_NAME = "PB_SH_CNPJ";
     private static final String SH_TOKEN_ENV_VAR_NAME = "PB_SH_TOKEN";
@@ -40,5 +42,6 @@ public abstract class PlugBoleto {
 
     // *****************************************************************************
 
+    public abstract AssignorResource assignors();
 
 }
