@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 
 public enum Environment {
-    HOMOLOGATION("http://homologacao.plugboleto.com.br/api"), PRODUCTION("http://plugboleto.com.br/api");
+    HOMOLOGATION("http://homologacao.plugboleto.com.br/api/"), PRODUCTION("http://plugboleto.com.br/api/");
 
     private String baseUrl;
 
