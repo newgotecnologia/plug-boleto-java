@@ -18,4 +18,8 @@ Boleto boleto = Boleto.builder()
     .build();
 
 tecnoSpeed.boletos().emitir(boleto);
+
+Paged paged = tecnoSpeec.assignors().findAll();
+Paged next = paged.next();
+
 ```

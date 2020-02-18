@@ -1,6 +1,7 @@
 package br.com.skywalker.plugboleto.test;
 
 import br.com.skywalker.plugboleto.PlugBoleto;
+import lombok.var;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.EnvironmentVariables;
