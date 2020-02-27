@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 public class Response<T> {
-
     @JsonProperty("_status")
     private ResponseStatus status;
 
@@ -15,4 +14,9 @@ public class Response<T> {
     @JsonProperty("_dados")
     private T data;
 
+    public Response(ResponseStatus status, String message, T data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
 }
