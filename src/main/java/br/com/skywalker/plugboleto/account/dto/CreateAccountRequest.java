@@ -24,7 +24,7 @@ public class CreateAccountRequest extends Request<CreateAccountRequest> {
     private String accountType;
 
     @JsonProperty("ContaCodigoBeneficiario")
-    private String accountDrawer;
+    private String accountDrawerCode;
 
     @JsonProperty("ContaCodigoEmpresa")
     private String accountCompanyCode;
@@ -41,8 +41,6 @@ public class CreateAccountRequest extends Request<CreateAccountRequest> {
 }
 
 /*
-Request example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360006230413-Cadastrando-uma-Conta'
-{
     "ContaCodigoBanco": "341",
     "ContaAgencia": "1234",
     "ContaAgenciaDV": "1",
@@ -53,5 +51,4 @@ Request example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/3
     "ContaCodigoEmpresa": "12434", => If is Bradesco bank this field is mandatory
     "ContaValidacaoAtiva": false,
     "ContaImpressaoAtualizada": false
-}
 */

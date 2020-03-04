@@ -49,8 +49,6 @@ public class CreateAssignorRequest extends Request<CreateAssignorRequest> {
 }
 
 /*
-Request example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360006128214-Cadastrando-um-Cedente'
-{
   "CedenteRazaoSocial": "Empresa Ltda",
   "CedenteNomeFantasia": "Empresa",
   "CedenteCPFCNPJ": "14868336000185",
@@ -62,5 +60,4 @@ Request example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/3
   "CedenteEnderecoCidadeIBGE": "4115200",
   "CedenteTelefone": "(44) 3033-1234",
   "CedenteEmail": "cobranca@boleto.com.br"
-}
 */

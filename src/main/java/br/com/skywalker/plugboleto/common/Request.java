@@ -38,7 +38,7 @@ public class Request<T> {
         call.cancel();
     }
 
-    private T convertResponse(Response<T> response) {
+    protected T convertResponse(Response<T> response) {
         if (response.isSuccessful()) {
             return response.body();
         }

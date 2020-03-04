@@ -103,10 +103,6 @@ class CreateAssignorResponseData {
 }
 
 /*
-Response example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360006128214-Cadastrando-um-Cedente'
-{
-  "_status": "sucesso",
-  "_dados": {
     "id": 728,
     "razaosocial": "Empresa Ltda",
     "nomefantasia": "Empresa",
@@ -136,6 +132,4 @@ Response example from: 'https://atendimento.tecnospeed.com.br/hc/pt-br/articles/
     "contas": [],
     "cidadeibge": 4115200,
     "cidade": "Maringá"
-  }
-}
 */

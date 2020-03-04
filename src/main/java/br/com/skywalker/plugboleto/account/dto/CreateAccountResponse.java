@@ -1,5 +1,6 @@
 package br.com.skywalker.plugboleto.account.dto;
 
+import br.com.skywalker.plugboleto.agreement.dto.ListedAgreement;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +8,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class CreateAccountResponse extends Response<CreateAccountResponse> {
+public class CreateAccountResponse extends Response<CreateAccountResponseData> {
+    public CreateAccountResponse(ResponseStatus status, String message, CreateAccountResponseData data) {
+        super(status, message, data);
+    }
+}
+
+class CreateAccountResponseData {
     @JsonProperty("id")
     private long id;
 
@@ -42,30 +49,21 @@ public class CreateAccountResponse extends Response<CreateAccountResponse> {
     private LocalDateTime accountCompanyCode;
 
     @JsonProperty("convenios")
-    private List<String> agreements;
-
-    public CreateAccountResponse(ResponseStatus status, String message, CreateAccountResponse data) {
-        super(status, message, data);
-    }
+    private List<ListedAgreement> agreements;
 }
 
 /*
-{
-    "_status": "sucesso",
-    "_dados": {
-        "id": 168,
-        "codigo_banco": "341",
-        "agencia": "1234",
-        "agencia_dv": "1",
-        "conta": "59698",
-        "conta_dv": "3",
-        "tipo_conta": "CORRENTE",
-        "cod_beneficiario": "60473",
-        "id_cedente": 44,
-        "criado": "2017-03-30T16:53:48.000Z",
-        "atualizado": "2017-03-30T16:53:48.000Z",
-        "cod_empresa": null,
-        "convenios": []
-        }
-}
+    "id": 168,
+    "codigo_banco": "341",
+    "agencia": "1234",
+    "agencia_dv": "1",
+    "conta": "59698",
+    "conta_dv": "3",
+    "tipo_conta": "CORRENTE",
+    "cod_beneficiario": "60473",
+    "id_cedente": 44,
+    "criado": "2017-03-30T16:53:48.000Z",
+    "atualizado": "2017-03-30T16:53:48.000Z",
+    "cod_empresa": null,
+    "convenios": []
 */
