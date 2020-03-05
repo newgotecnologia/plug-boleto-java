@@ -8,7 +8,6 @@ import retrofit2.Call;
 import java.util.List;
 import java.util.function.Function;
 
-@RequiredArgsConstructor
 public abstract class PagedResponse<T> extends Response<List<T>> {
 
     private final Function<String, Call<? extends PagedResponse<T>>> pageProvider;
@@ -16,6 +15,15 @@ public abstract class PagedResponse<T> extends Response<List<T>> {
     @Getter
     @JsonProperty("_meta")
     private PagedResponseMetadata metadata;
+
+    public PagedResponse(Function<String, Call<? extends PagedResponse<T>>> pageProvider){
+        this.pageProvider = pageProvider;
+    }
+
+    public PagedResponse(ResponseStatus status, String message, List<T> data, Function<String, Call<? extends PagedResponse<T>>> pageProvider) {
+        super(status, message, data);
+        this.pageProvider = pageProvider;
+    }
 
     public Request<? extends PagedResponse<T>> next() throws IllegalStateException {
         if (!this.getMetadata().hasNext()) throw new IllegalStateException("There is no next page");

@@ -4,9 +4,11 @@ import br.com.skywalker.plugboleto.common.PagedResponse;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import retrofit2.Call;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.function.Function;
 
 public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse> {
     @JsonProperty("IdIntegracao")
@@ -176,6 +178,10 @@ public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse
 
     @JsonProperty("CedenteNumeroConvenio")
     private String assignorAgreementNumber;
+
+    public SearchBankSlipResponse(Function<String, Call<? extends PagedResponse<SearchBankSlipResponse>>> pageProvider) {
+        super(pageProvider);
+    }
 }
 
 class TitleOccurrence {
