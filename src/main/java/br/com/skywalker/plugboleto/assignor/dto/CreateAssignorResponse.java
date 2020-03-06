@@ -20,9 +20,7 @@ public class CreateAssignorResponse extends Response<CreateAssignorResponse.Crea
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-
     @JsonIgnoreProperties(ignoreUnknown = true)
-    static
     class CreateAssignorResponseData {
         @JsonProperty("id")
         private long id;
