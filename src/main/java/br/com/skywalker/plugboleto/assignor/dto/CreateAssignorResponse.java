@@ -98,12 +98,14 @@ class CreateAssignorResponseData {
     private LocalDateTime activationDate;
 
     @JsonProperty("data_inativacao")
+    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
     private LocalDateTime inactivationDate;
 
     @JsonProperty("certificado")
     private String certified;
 
     @JsonProperty("dtvencimentocertificado")
+    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
     private LocalDateTime certifiedExpirationDate;
 
     @JsonProperty("uf")
@@ -117,6 +119,11 @@ class CreateAssignorResponseData {
 
     @JsonProperty("cidade")
     private String addressCity;
+
+    public void setCreationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
+    public void setLastUpdate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
+    public void setInactivationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
+    public void setCertifiedExpirationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
 }
 
 /*
