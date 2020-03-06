@@ -43,7 +43,15 @@ public class Request<T> {
             return response.body();
         }
 
-        throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code());
+        if(response.errorBody() == null)
+            throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + " => without response body");
+        else {
+            try {
+                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n" + response.errorBody().string());
+            } catch (IOException e){
+                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n => can't show the response body");
+            }
+        }
     }
 
 }
