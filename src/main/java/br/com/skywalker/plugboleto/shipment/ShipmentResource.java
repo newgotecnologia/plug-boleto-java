@@ -8,13 +8,13 @@ import retrofit2.Retrofit;
 import java.util.List;
 
 public class ShipmentResource {
-    public static final String ACCOUNT_SERVICE_KEY = "ACCOUNT_SERVICE";
+    public static final String SHIPMENT_SERVICE_KEY = "SHIPMENT_SERVICE";
 
     public ShipmentResource(Retrofit retrofit) {
-        Registry.set(ACCOUNT_SERVICE_KEY, retrofit.create(ShipmentService.class));
+        Registry.set(SHIPMENT_SERVICE_KEY, retrofit.create(ShipmentService.class));
     }
 
     public Request<GenerateShipmentResponse> sendEmail(List<String> integrationIds, String assignorFederalId) {
-        return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, ShipmentService.class).sendEmail(integrationIds, assignorFederalId));
+        return new Request<>(Registry.get(SHIPMENT_SERVICE_KEY, ShipmentService.class).sendEmail(integrationIds, assignorFederalId));
     }
 }
