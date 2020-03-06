@@ -15,111 +15,108 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 
-public class CreateAssignorResponse extends Response<CreateAssignorResponseData> {
-    public CreateAssignorResponse(ResponseStatus status, String message, CreateAssignorResponseData data) {
-        super(status, message, data);
+public class CreateAssignorResponse extends Response<CreateAssignorResponse.CreateAssignorResponseData> {
+    @Getter(value = AccessLevel.PUBLIC)
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    static
+    class CreateAssignorResponseData {
+        @JsonProperty("id")
+        private long id;
+
+        @JsonProperty("razaosocial")
+        private String companyName;
+
+        @JsonProperty("nomefantasia")
+        private String tradingName;
+
+        @JsonProperty("cpf_cnpj")
+        private String federalId;
+
+        @JsonProperty("logradouro")
+        private String addressStreet;
+
+        @JsonProperty("numero")
+        private String addressNumber;
+
+        @JsonProperty("complemento")
+        private String addressComplement;
+
+        @JsonProperty("bairro")
+        private String addressNeighborhood;
+
+        @JsonProperty("cep")
+        private String addressZipCode;
+
+        @JsonProperty("id_cidade")
+        private String addressCityIBGECode;
+
+        @JsonProperty("telefone")
+        private String phone;
+
+        @JsonProperty("email")
+        private String email;
+
+        @JsonProperty("criado")
+        private String creationDate;
+
+        @JsonProperty("atualizado")
+        private String lastUpdate;
+
+        @JsonProperty("token_cedente")
+        private String transferorToken;
+
+        @JsonProperty("token_esales")
+        private String eSalesToken;
+
+        @JsonProperty("situacao")
+        private String status;
+
+        @JsonProperty("id_software_house")
+        private long softwareHouseId;
+
+        @JsonProperty("config_email")
+        private String emailConfiguration;
+
+        @JsonProperty("config_notificacao")
+        private String notificationConfiguration;
+
+        @JsonProperty("motivo_inativacao")
+        private String inactivationReason;
+
+        @JsonProperty("data_ativacao")
+        private String activationDate;
+
+        @JsonProperty("data_inativacao")
+        private String inactivationDate;
+
+        @JsonProperty("certificado")
+        private String certified;
+
+        @JsonProperty("dtvencimentocertificado")
+        @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
+        private String certifiedExpirationDate;
+
+        @JsonProperty("uf")
+        private String addressSate;
+
+        @JsonProperty("contas")
+        private List<String> accounts;
+
+        @JsonProperty("cidadeibge")
+        private long addressIBGECode;
+
+        @JsonProperty("cidade")
+        private String addressCity;
+
+        public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
+        public LocalDateTime getLastUpdate(String date){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
+        public LocalDateTime getInactivationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.inactivationDate); }
+        public LocalDateTime getCertifiedExpirationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.certifiedExpirationDate); }
     }
-}
-
-@Getter(value = AccessLevel.PUBLIC)
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class CreateAssignorResponseData {
-    @JsonProperty("id")
-    private long id;
-
-    @JsonProperty("razaosocial")
-    private String companyName;
-
-    @JsonProperty("nomefantasia")
-    private String tradingName;
-
-    @JsonProperty("cpf_cnpj")
-    private String federalId;
-
-    @JsonProperty("logradouro")
-    private String addressStreet;
-
-    @JsonProperty("numero")
-    private String addressNumber;
-
-    @JsonProperty("complemento")
-    private String addressComplement;
-
-    @JsonProperty("bairro")
-    private String addressNeighborhood;
-
-    @JsonProperty("cep")
-    private String addressZipCode;
-
-    @JsonProperty("id_cidade")
-    private String addressCityIBGECode;
-
-    @JsonProperty("telefone")
-    private String phone;
-
-    @JsonProperty("email")
-    private String email;
-
-    @JsonProperty("criado")
-    private String creationDate;
-
-    @JsonProperty("atualizado")
-    private String lastUpdate;
-
-    @JsonProperty("token_cedente")
-    private String transferorToken;
-
-    @JsonProperty("token_esales")
-    private String eSalesToken;
-
-    @JsonProperty("situacao")
-    private String status;
-
-    @JsonProperty("id_software_house")
-    private long softwareHouseId;
-
-    @JsonProperty("config_email")
-    private String emailConfiguration;
-
-    @JsonProperty("config_notificacao")
-    private String notificationConfiguration;
-
-    @JsonProperty("motivo_inativacao")
-    private String inactivationReason;
-
-    @JsonProperty("data_ativacao")
-    private String activationDate;
-
-    @JsonProperty("data_inativacao")
-    private String inactivationDate;
-
-    @JsonProperty("certificado")
-    private String certified;
-
-    @JsonProperty("dtvencimentocertificado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private String certifiedExpirationDate;
-
-    @JsonProperty("uf")
-    private String addressSate;
-
-    @JsonProperty("contas")
-    private List<String> accounts;
-
-    @JsonProperty("cidadeibge")
-    private long addressIBGECode;
-
-    @JsonProperty("cidade")
-    private String addressCity;
-
-    public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
-    public LocalDateTime getLastUpdate(String date){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
-    public LocalDateTime getInactivationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.inactivationDate); }
-    public LocalDateTime getCertifiedExpirationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.certifiedExpirationDate); }
 }
 
 /*
