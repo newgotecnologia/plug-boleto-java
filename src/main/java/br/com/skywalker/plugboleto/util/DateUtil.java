@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class DateUtil {
     public static final String DATE_TECNOSPEED_PATTERN = "dd/MM/yyyy";
     public static final String DATE_TIME_TECNOSPEED_PATTERN = "dd/MM/yyyy HH:mm:ss";
-    public static final String DATE_TIME_OFFSET_ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    public static final String DATE_TIME_OFFSET_ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"; // 2020-03-06T18:51:27.000Z
 
     public static LocalDateTime fromStringToLocalDateTime(String date){
         if(date.length() == 10)
