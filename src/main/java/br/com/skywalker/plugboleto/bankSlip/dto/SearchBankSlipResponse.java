@@ -4,11 +4,18 @@ import br.com.skywalker.plugboleto.common.PagedResponse;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import retrofit2.Call;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Function;
+
+@Getter
+@Setter
 
 public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse> {
     @JsonProperty("IdIntegracao")
@@ -184,6 +191,11 @@ public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse
     }
 }
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 class TitleOccurrence {
     @JsonProperty("codigo")
     private String code;
@@ -200,6 +212,11 @@ class TitleOccurrence {
     private LocalDateTime lastUpdate;
 }
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 class TitleMovements {
     @JsonProperty("codigo")
     private String code;
@@ -214,6 +231,11 @@ class TitleMovements {
     @JsonProperty("ocorrencias")
     private List<TitleMovementOccurrence> occurrences;
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class TitleMovementOccurrence {
     @JsonProperty("codigo")

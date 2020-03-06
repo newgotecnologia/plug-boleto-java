@@ -3,8 +3,17 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class PrintBankSlipResponse extends Response<PrintBankSlipResponse> {
     @JsonProperty("situacao")

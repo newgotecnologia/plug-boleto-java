@@ -3,9 +3,18 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Map;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
     @JsonProperty("_sucesso")
@@ -18,6 +27,11 @@ public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
         super(status, message, data);
     }
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class CreateBankSlipResponseSuccess {
     @JsonProperty("idintegracao")
@@ -52,6 +66,11 @@ class CreateBankSlipResponseSuccess {
     "CedenteConvenioNumero": "321"
 */
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 class CreateBankSlipResponseError {
     @JsonProperty("_status_http")
     private long httpStatus;
@@ -62,6 +81,11 @@ class CreateBankSlipResponseError {
     @JsonProperty("_dados")
     private CreateBankSlipRequest data;
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class Error {
     @JsonProperty("erroValidacao")

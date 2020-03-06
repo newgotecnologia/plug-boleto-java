@@ -3,15 +3,29 @@ package br.com.skywalker.plugboleto.assignor.dto;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class CreateAssignorResponse extends Response<CreateAssignorResponseData> {
     public CreateAssignorResponse(ResponseStatus status, String message, CreateAssignorResponseData data) {
         super(status, message, data);
     }
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class CreateAssignorResponseData {
     @JsonProperty("id")

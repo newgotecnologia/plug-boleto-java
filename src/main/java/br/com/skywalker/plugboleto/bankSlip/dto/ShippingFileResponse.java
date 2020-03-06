@@ -3,8 +3,17 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class ShippingFileResponse extends Response<ShippingFileResponse> {
     @JsonProperty("_sucesso")
@@ -17,6 +26,11 @@ public class ShippingFileResponse extends Response<ShippingFileResponse> {
         super(status, message, data);
     }
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class ShippingFileSuccessResponse {
     @JsonProperty("CedenteContaCodigoBanco")
@@ -50,10 +64,20 @@ class ShippingFileSuccessResponse {
     private List<ShippingFileSuccessTitleResponse> titles;
 }
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 class ShippingFileSuccessTitleResponse {
     @JsonProperty("idintegracao")
     private String integrationId;
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class ShippingFileFailureResponse {
     @JsonProperty("idintegracao")

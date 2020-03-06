@@ -4,10 +4,15 @@ import br.com.skywalker.plugboleto.common.Request;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
 import retrofit2.Call;
 
 import java.time.LocalDate;
 import java.util.List;
+
+@Getter
+@Builder
 
 public class UpdateBankSlipRequest extends Request<UpdateBankSlipRequest> {
     @JsonProperty("Tipo")
@@ -20,6 +25,9 @@ public class UpdateBankSlipRequest extends Request<UpdateBankSlipRequest> {
         super(call);
     }
 }
+
+@Getter
+@Builder
 
 class UpdateBankSlipBankSlipRequest {
     @JsonProperty("TituloDataVencimento")

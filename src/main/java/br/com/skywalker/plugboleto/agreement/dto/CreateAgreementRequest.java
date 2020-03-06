@@ -2,7 +2,12 @@ package br.com.skywalker.plugboleto.agreement.dto;
 
 import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
 import retrofit2.Call;
+
+@Getter
+@Builder
 
 public class CreateAgreementRequest extends Request<CreateAgreementRequest> {
     @JsonProperty("ConvenioNumero")

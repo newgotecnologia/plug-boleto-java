@@ -5,14 +5,28 @@ import br.com.skywalker.plugboleto.common.ResponseStatus;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class CreateAgreementResponse extends Response<CreateAgreementResponseData> {
     public CreateAgreementResponse(ResponseStatus status, String message, CreateAgreementResponseData data) {
         super(status, message, data);
     }
 }
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 class CreateAgreementResponseData {
     @JsonProperty("id")

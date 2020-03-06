@@ -2,9 +2,14 @@ package br.com.skywalker.plugboleto.bankSlipEmail.dto;
 
 import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
 import retrofit2.Call;
 
 import java.util.List;
+
+@Getter
+@Builder
 
 public class BankSlipEmailRequest extends Request<BankSlipEmailRequest> {
     @JsonProperty("IdIntegracao")
@@ -41,6 +46,10 @@ public class BankSlipEmailRequest extends Request<BankSlipEmailRequest> {
         super(call);
     }
 }
+
+
+@Getter
+@Builder
 
 class MailBankSlipRequestAnnex {
     @JsonProperty("Arquivo")

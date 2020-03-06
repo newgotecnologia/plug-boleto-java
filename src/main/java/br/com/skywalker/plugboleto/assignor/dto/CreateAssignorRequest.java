@@ -3,10 +3,12 @@ package br.com.skywalker.plugboleto.assignor.dto;
 import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 import retrofit2.Call;
 
 @Getter
+@Builder
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateAssignorRequest extends Request<CreateAssignorRequest> {
