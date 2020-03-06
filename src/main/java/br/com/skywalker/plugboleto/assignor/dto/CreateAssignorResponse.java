@@ -66,12 +66,10 @@ class CreateAssignorResponseData {
     private String email;
 
     @JsonProperty("criado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime creationDate;
+    private String creationDate;
 
     @JsonProperty("atualizado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime lastUpdate;
+    private String lastUpdate;
 
     @JsonProperty("token_cedente")
     private String transferorToken;
@@ -95,18 +93,17 @@ class CreateAssignorResponseData {
     private String inactivationReason;
 
     @JsonProperty("data_ativacao")
-    private LocalDateTime activationDate;
+    private String activationDate;
 
     @JsonProperty("data_inativacao")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime inactivationDate;
+    private String inactivationDate;
 
     @JsonProperty("certificado")
     private String certified;
 
     @JsonProperty("dtvencimentocertificado")
     @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime certifiedExpirationDate;
+    private String certifiedExpirationDate;
 
     @JsonProperty("uf")
     private String addressSate;
@@ -120,10 +117,10 @@ class CreateAssignorResponseData {
     @JsonProperty("cidade")
     private String addressCity;
 
-    public void setCreationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
-    public void setLastUpdate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
-    public void setInactivationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
-    public void setCertifiedExpirationDate(String date){ this.creationDate = DateUtil.fromStringToLocalDateTime(date); }
+    public LocalDateTime getCreationDate(){ DateUtil.fromStringToLocalDateTime(this.creationDate); }
+    public LocalDateTime getLastUpdate(String date){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
+    public LocalDateTime getInactivationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.inactivationDate); }
+    public LocalDateTime getCertifiedExpirationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.certifiedExpirationDate); }
 }
 
 /*
