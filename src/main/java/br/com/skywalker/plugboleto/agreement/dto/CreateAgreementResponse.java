@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 
 public class CreateAgreementResponse extends Response<CreateAgreementResponseData> {
     public CreateAgreementResponse(ResponseStatus status, String message, CreateAgreementResponseData data) {

@@ -12,7 +12,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 
 public class PrintBankSlipResponse extends Response<PrintBankSlipResponse> {

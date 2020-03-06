@@ -16,7 +16,6 @@ import java.util.Map;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 
 public class UploadReturnFileStatusResponse extends Response<UploadReturnFileStatusResponse> {

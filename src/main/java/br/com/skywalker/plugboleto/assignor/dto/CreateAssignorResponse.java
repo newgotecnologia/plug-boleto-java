@@ -2,6 +2,8 @@ package br.com.skywalker.plugboleto.assignor.dto;
 
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import br.com.skywalker.plugboleto.util.DateUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -64,16 +66,18 @@ class CreateAssignorResponseData {
     private String email;
 
     @JsonProperty("criado")
+    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
     private LocalDateTime creationDate;
 
     @JsonProperty("atualizado")
+    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
     private LocalDateTime lastUpdate;
 
     @JsonProperty("token_cedente")
-    private LocalDateTime transferorToken;
+    private String transferorToken;
 
     @JsonProperty("token_esales")
-    private LocalDateTime eSalesToken;
+    private String eSalesToken;
 
     @JsonProperty("situacao")
     private String status;

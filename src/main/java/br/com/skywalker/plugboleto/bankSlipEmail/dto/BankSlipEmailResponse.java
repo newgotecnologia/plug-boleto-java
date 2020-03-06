@@ -10,7 +10,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 
 public class BankSlipEmailResponse extends Response<BankSlipEmailResponse> {
