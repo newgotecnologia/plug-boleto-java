@@ -4,6 +4,7 @@ import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class CreateAssignorResponse extends Response<CreateAssignorResponseData>
 @AllArgsConstructor
 @NoArgsConstructor
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 class CreateAssignorResponseData {
     @JsonProperty("id")
     private long id;
