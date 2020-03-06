@@ -16,12 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 
 public class CreateAssignorResponse extends Response<CreateAssignorResponse.CreateAssignorResponseData> {
-    @Getter(value = AccessLevel.PUBLIC)
+    @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
-    class CreateAssignorResponseData {
+    public static class CreateAssignorResponseData {
         @JsonProperty("id")
         private long id;
 
