@@ -25,11 +25,11 @@ public class AssignorResource {
         return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).findById(id));
     }
 
-    public Request<CreateAssignorResponse> create(CreateAssignorRequest request, String assignorFederalId) {
+    public Request<CreateAssignorResponse> create(CreateAssignorRequest request) {
         return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).create(request));
     }
 
-    public Request<CreateAssignorResponse> update(CreateAssignorRequest request, String assignorFederalId, long id) {
+    public Request<CreateAssignorResponse> update(CreateAssignorRequest request, long id) {
         return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).update(request, id));
     }
 }
