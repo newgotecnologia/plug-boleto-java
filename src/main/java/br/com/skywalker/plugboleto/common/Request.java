@@ -43,7 +43,7 @@ public class Request<T> {
             return response.body();
         }
 
-        throw new RuntimeException("Response wasn't successful");
+        throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code());
     }
 
 }
