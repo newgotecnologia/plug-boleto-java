@@ -6,7 +6,7 @@ import br.com.skywalker.plugboleto.account.dto.CreateAccountResponse;
 import br.com.skywalker.plugboleto.common.Request;
 import retrofit2.Retrofit;
 
-class AccountResource {
+public class AccountResource {
     public static final String ACCOUNT_SERVICE_KEY = "ACCOUNT_SERVICE";
 
     public AccountResource(Retrofit retrofit) {
