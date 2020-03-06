@@ -29,7 +29,7 @@ public class AssignorResource {
         return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).create(request));
     }
 
-    public Request<CreateAssignorResponse> update(CreateAssignorRequest request, long id) {
+    public Request<CreateAssignorResponse> update(CreateAssignorRequest request, String assignorFederalId, long id) {
         return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).update(request, id));
     }
 }

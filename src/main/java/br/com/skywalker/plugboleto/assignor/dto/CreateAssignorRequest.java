@@ -11,7 +11,7 @@ import retrofit2.Call;
 @Builder
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateAssignorRequest extends Request<CreateAssignorRequest> {
+public class CreateAssignorRequest {
     @JsonProperty("CedenteRazaoSocial")
     private String transferorCorporateName;
 
@@ -45,9 +45,6 @@ public class CreateAssignorRequest extends Request<CreateAssignorRequest> {
     @JsonProperty("CedenteEmail")
     private String transferorEmail;
 
-    public CreateAssignorRequest(Call<CreateAssignorRequest> call) {
-        super(call);
-    }
 }
 
 /*

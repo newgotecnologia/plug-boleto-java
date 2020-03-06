@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import retrofit2.Call;
 
 import java.time.LocalDate;
@@ -14,21 +16,16 @@ import java.util.List;
 @Getter
 @Builder
 
-public class UpdateBankSlipRequest extends Request<UpdateBankSlipRequest> {
+public class UpdateBankSlipRequest {
     @JsonProperty("Tipo")
     private String type;
 
     @JsonProperty("Boletos")
     private List<UpdateBankSlipBankSlipRequest> bankSlips;
-
-    public UpdateBankSlipRequest(Call<UpdateBankSlipRequest> call) {
-        super(call);
-    }
 }
 
 @Getter
 @Builder
-
 class UpdateBankSlipBankSlipRequest {
     @JsonProperty("TituloDataVencimento")
     @JsonFormat(pattern = DateUtil.DATE_TECNOSPEED_PATTERN)

@@ -4,6 +4,8 @@ import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import retrofit2.Call;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
 @Getter
 @Builder
 
-public class BankSlipEmailRequest extends Request<BankSlipEmailRequest> {
+public class BankSlipEmailRequest {
     @JsonProperty("IdIntegracao")
     private List<String> integrationIds;
 
@@ -41,10 +43,6 @@ public class BankSlipEmailRequest extends Request<BankSlipEmailRequest> {
 
     @JsonProperty("Anexos")
     private List<MailBankSlipRequestAnnex> annexes;
-
-    public BankSlipEmailRequest(Call<BankSlipEmailRequest> call) {
-        super(call);
-    }
 }
 
 

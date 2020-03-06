@@ -13,8 +13,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
 public class CreateAssignorResponse extends Response<CreateAssignorResponseData> {
     public CreateAssignorResponse(ResponseStatus status, String message, CreateAssignorResponseData data) {

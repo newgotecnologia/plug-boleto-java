@@ -4,12 +4,14 @@ import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import retrofit2.Call;
 
 @Getter
 @Builder
 
-public class CreateAgreementRequest extends Request<CreateAgreementRequest> {
+public class CreateAgreementRequest {
     @JsonProperty("ConvenioNumero")
     private String agreementNumber;
 
@@ -33,10 +35,6 @@ public class CreateAgreementRequest extends Request<CreateAgreementRequest> {
 
     @JsonProperty("Conta")
     private String account;
-
-    public CreateAgreementRequest(Call<CreateAgreementRequest> call) {
-        super(call);
-    }
 }
 
 /*

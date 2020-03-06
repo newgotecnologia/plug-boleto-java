@@ -4,18 +4,16 @@ import br.com.skywalker.plugboleto.common.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import retrofit2.Call;
 
 @Getter
 @Builder
 
-public class UploadReturnFileRequest extends Request<UploadReturnFileRequest> {
+public class UploadReturnFileRequest {
     @JsonProperty("arquivo")
     private String file;
-
-    public UploadReturnFileRequest(Call<UploadReturnFileRequest> call) {
-        super(call);
-    }
 }
 
 /*
