@@ -117,7 +117,7 @@ class CreateAssignorResponseData {
     @JsonProperty("cidade")
     private String addressCity;
 
-    public LocalDateTime getCreationDate(){ DateUtil.fromStringToLocalDateTime(this.creationDate); }
+    public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
     public LocalDateTime getLastUpdate(String date){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
     public LocalDateTime getInactivationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.inactivationDate); }
     public LocalDateTime getCertifiedExpirationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.certifiedExpirationDate); }
