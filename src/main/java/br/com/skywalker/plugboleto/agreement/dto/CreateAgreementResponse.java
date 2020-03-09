@@ -20,51 +20,50 @@ public class CreateAgreementResponse extends Response<CreateAgreementResponseDat
     public CreateAgreementResponse(ResponseStatus status, String message, CreateAgreementResponseData data) {
         super(status, message, data);
     }
-}
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+    public static class CreateAgreementResponseData {
+        @JsonProperty("id")
+        private long id;
 
-class CreateAgreementResponseData {
-    @JsonProperty("id")
-    private long id;
+        @JsonProperty("numero_convenio")
+        private String agreementNumber;
 
-    @JsonProperty("numero_convenio")
-    private String agreementNumber;
+        @JsonProperty("descricao_convenio")
+        private String agreementDescription;
 
-    @JsonProperty("descricao_convenio")
-    private String agreementDescription;
+        @JsonProperty("carteira")
+        private String agreementWallet;
 
-    @JsonProperty("carteira")
-    private String agreementWallet;
+        @JsonProperty("especie")
+        private String agreementCash;
 
-    @JsonProperty("especie")
-    private String agreementCash;
+        @JsonProperty("id_conta")
+        private String agreementAccountId;
 
-    @JsonProperty("id_conta")
-    private String agreementAccountId;
+        @JsonProperty("criado")
+        @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
+        private LocalDateTime creationDate;
 
-    @JsonProperty("criado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime creationDate;
+        @JsonProperty("atualizado")
+        @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
+        private LocalDateTime lastUpdate;
 
-    @JsonProperty("atualizado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime lastUpdate;
+        @JsonProperty("padraoCNAB")
+        private String agreementCNABPattern;
 
-    @JsonProperty("padraoCNAB")
-    private String agreementCNABPattern;
+        @JsonProperty("utiliza_van")
+        private String agreementUseVan;
 
-    @JsonProperty("utiliza_van")
-    private String agreementUseVan;
+        @JsonProperty("numero_remessa")
+        private String agreementShipmentNumber;
 
-    @JsonProperty("numero_remessa")
-    private String agreementShipmentNumber;
-
-    @JsonProperty("_erro")
-    private String error;
+        @JsonProperty("_erro")
+        private String error;
+    }
 }
 
 /*

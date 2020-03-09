@@ -20,49 +20,49 @@ public class CreateAccountResponse extends Response<CreateAccountResponseData> {
     public CreateAccountResponse(ResponseStatus status, String message, CreateAccountResponseData data) {
         super(status, message, data);
     }
-}
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
 
-class CreateAccountResponseData {
-    @JsonProperty("id")
-    private long id;
+    public static class CreateAccountResponseData {
+        @JsonProperty("id")
+        private long id;
 
-    @JsonProperty("codigo_banco")
-    private String bankCode;
+        @JsonProperty("codigo_banco")
+        private String bankCode;
 
-    @JsonProperty("agencia")
-    private String branch;
+        @JsonProperty("agencia")
+        private String branch;
 
-    @JsonProperty("agencia_dv")
-    private String branchVerificationDigit;
+        @JsonProperty("agencia_dv")
+        private String branchVerificationDigit;
 
-    @JsonProperty("account")
-    private String accountNumber;
+        @JsonProperty("account")
+        private String accountNumber;
 
-    @JsonProperty("conta_dv")
-    private String accountNumberVerificationDigit;
+        @JsonProperty("conta_dv")
+        private String accountNumberVerificationDigit;
 
-    @JsonProperty("tipo_conta")
-    private String accountType;
+        @JsonProperty("tipo_conta")
+        private String accountType;
 
-    @JsonProperty("cod_beneficiario")
-    private String accountDrawer;
+        @JsonProperty("cod_beneficiario")
+        private String accountDrawer;
 
-    @JsonProperty("id_cedente")
-    private long assignorId;
+        @JsonProperty("id_cedente")
+        private long assignorId;
 
-    @JsonProperty("criado")
-    private LocalDateTime lastUpdate;
+        @JsonProperty("criado")
+        private LocalDateTime lastUpdate;
 
-    @JsonProperty("cod_empresa")
-    private LocalDateTime accountCompanyCode;
+        @JsonProperty("cod_empresa")
+        private LocalDateTime accountCompanyCode;
 
-    @JsonProperty("convenios")
-    private List<ListedAgreement> agreements;
+        @JsonProperty("convenios")
+        private List<ListedAgreement> agreements;
+    }
 }
 
 /*
