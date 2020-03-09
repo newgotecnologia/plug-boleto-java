@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 
-public class CreateAccountResponse extends Response<CreateAccountResponseData> {
+public class CreateAccountResponse extends Response<CreateAccountResponse.CreateAccountResponseData> {
     public CreateAccountResponse(ResponseStatus status, String message, CreateAccountResponseData data) {
         super(status, message, data);
     }
