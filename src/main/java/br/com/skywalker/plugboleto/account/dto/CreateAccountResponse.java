@@ -3,6 +3,7 @@ package br.com.skywalker.plugboleto.account.dto;
 import br.com.skywalker.plugboleto.agreement.dto.ListedAgreement;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -53,13 +54,19 @@ public class CreateAccountResponse extends Response<CreateAccountResponse.Create
         private long assignorId;
 
         @JsonProperty("criado")
-        private LocalDateTime lastUpdate;
+        private String creationDate;
+
+        @JsonProperty("atualizado")
+        private String lastUpdate;
 
         @JsonProperty("cod_empresa")
-        private LocalDateTime accountCompanyCode;
+        private String accountCompanyCode;
 
         @JsonProperty("convenios")
         private List<ListedAgreement> agreements;
+
+        public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
+        public LocalDateTime getLastUpdate(){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
     }
 }
 
