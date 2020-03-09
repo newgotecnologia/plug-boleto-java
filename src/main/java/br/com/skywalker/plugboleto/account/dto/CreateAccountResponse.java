@@ -3,6 +3,7 @@ package br.com.skywalker.plugboleto.account.dto;
 import br.com.skywalker.plugboleto.agreement.dto.ListedAgreement;
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,15 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 
 public class CreateAccountResponse extends Response<CreateAccountResponse.CreateAccountResponseData> {
-    public CreateAccountResponse(ResponseStatus status, String message, CreateAccountResponseData data) {
-        super(status, message, data);
-    }
-
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CreateAccountResponseData {
         @JsonProperty("id")
         private long id;
