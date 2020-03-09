@@ -15,6 +15,6 @@ interface AssignorService {
     @POST(Endpoints.BASE)
     Call<CreateAssignorResponse> create(@Body CreateAssignorRequest body);
 
-    @POST(Endpoints.BASE + "/{id}")
+    @PUT(Endpoints.BASE + "/{id}")
     Call<CreateAssignorResponse> update(@Body CreateAssignorRequest body, @Path("id") long id);
 }

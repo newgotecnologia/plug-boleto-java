@@ -16,7 +16,7 @@ public interface AgreementService {
     @POST(Endpoints.BASE)
     Call<CreateAgreementResponse> create(@Body CreateAgreementRequest body, @Header("cnpj-cedente") String assignorFederalId);
 
-    @POST(Endpoints.BASE + "/{id}")
+    @PUT(Endpoints.BASE + "/{id}")
     Call<CreateAgreementResponse> update(@Body CreateAgreementRequest body, @Header("cnpj-cedente") String assignorFederalId, @Path("id") long id);
 
     @DELETE(Endpoints.BASE + "/{id}")

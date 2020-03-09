@@ -16,7 +16,7 @@ public interface AccountService {
     @POST(Endpoints.BASE)
     Call<CreateAccountResponse> create(@Body CreateAccountRequest body, @Header("cnpj-cedente") String assignorFederalId);
 
-    @POST(Endpoints.BASE + "/{id}")
+    @PUT(Endpoints.BASE + "/{id}")
     Call<CreateAccountResponse> update(@Body CreateAccountRequest body, @Header("cnpj-cedente") String assignorFederalId, @Path("id") long id);
 
     @DELETE(Endpoints.BASE + "/{id}")
