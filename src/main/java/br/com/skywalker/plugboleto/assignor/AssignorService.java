@@ -16,5 +16,5 @@ interface AssignorService {
     Call<CreateAssignorResponse> create(@Body CreateAssignorRequest body);
 
     @PUT(Endpoints.BASE + "/{id}")
-    Call<CreateAssignorResponse> update(@Body CreateAssignorRequest body, @Path("id") long id);
+    Call<CreateAssignorResponse> update(@Body CreateAssignorRequest body, @Header("cnpj-cedente") String assignorFederalId, @Path("id") long id);
 }
