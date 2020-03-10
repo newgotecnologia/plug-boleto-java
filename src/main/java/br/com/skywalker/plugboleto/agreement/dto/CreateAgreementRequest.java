@@ -15,7 +15,7 @@ public class CreateAgreementRequest {
     @JsonProperty("ConvenioNumero")
     private String agreementNumber;
 
-    @JsonProperty("ConvenioNumero")
+    @JsonProperty("ConvenioDescricao")
     private String agreementDescription;
 
     @JsonProperty("ConvenioCarteira")
