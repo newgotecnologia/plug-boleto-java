@@ -2,10 +2,12 @@ package br.com.skywalker.plugboleto.agreement.dto;
 
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ListedAgreement {
     @JsonProperty("id")
     private long id;
@@ -26,12 +28,10 @@ public class ListedAgreement {
     private String agreementAccountId;
 
     @JsonProperty("criado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime creationDate;
+    private String creationDate;
 
     @JsonProperty("atualizado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime lastUpdate;
+    private String lastUpdate;
 
     @JsonProperty("padraoCNAB")
     private String agreementCNABPattern;
@@ -74,6 +74,9 @@ public class ListedAgreement {
 
     @JsonProperty("tipo_webservice")
     private String agreementWebServiceType;
+
+    public LocalDateTime getCreationDate() { return DateUtil.fromStringToLocalDateTime(this.creationDate); }
+    public LocalDateTime getLastUpdate() { return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
 }
 
 /*
