@@ -34,7 +34,7 @@ public class CreateAgreementRequest {
     private boolean agreementDailyReset;
 
     @JsonProperty("Conta")
-    private String account;
+    private long account;
 }
 
 /*
