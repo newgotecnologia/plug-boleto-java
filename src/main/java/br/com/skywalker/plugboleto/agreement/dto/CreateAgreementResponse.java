@@ -47,12 +47,10 @@ public class CreateAgreementResponse extends Response<CreateAgreementResponse.Cr
         private String agreementAccountId;
 
         @JsonProperty("criado")
-        @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-        private LocalDateTime creationDate;
+        private String creationDate;
 
         @JsonProperty("atualizado")
-        @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-        private LocalDateTime lastUpdate;
+        private String lastUpdate;
 
         @JsonProperty("padraoCNAB")
         private String agreementCNABPattern;
@@ -65,6 +63,9 @@ public class CreateAgreementResponse extends Response<CreateAgreementResponse.Cr
 
         @JsonProperty("_erro")
         private String error;
+
+        public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
+        public LocalDateTime getLastUpdate(){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
     }
 }
 
