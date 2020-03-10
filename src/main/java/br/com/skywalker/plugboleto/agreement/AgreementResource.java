@@ -7,33 +7,33 @@ import br.com.skywalker.plugboleto.common.Request;
 import retrofit2.Retrofit;
 
 public class AgreementResource {
-    public static final String ASSIGNOR_SERVICE_KEY = "ASSIGNOR_SERVICE";
+    public static final String AGREEMENT_SERVICE_KEY = "AGREEMENT_SERVICE";
 
     public AgreementResource(Retrofit retrofit) {
-        Registry.set(ASSIGNOR_SERVICE_KEY, retrofit.create(AgreementService.class));
+        Registry.set(AGREEMENT_SERVICE_KEY, retrofit.create(AgreementService.class));
     }
 
     public Request<AgreementPagedResponse> findAll() {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).findAll());
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).findAll());
     }
 
     public Request<AgreementPagedResponse> findAll(long pageNum, long pageSize) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).findAll());
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).findAll());
     }
 
     public Request<AgreementPagedResponse> findById(Long id) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).findById(id));
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).findById(id));
     }
 
     public Request<CreateAgreementResponse> create(CreateAgreementRequest request, String assignorFederalId) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).create(request, assignorFederalId));
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).create(request, assignorFederalId));
     }
 
     public Request<CreateAgreementResponse> update(CreateAgreementRequest request, String assignorFederalId, long id) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).update(request, assignorFederalId, id));
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).update(request, assignorFederalId, id));
     }
 
     public Request delete(String assignorFederalId, long id) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AgreementService.class).delete(assignorFederalId, id));
+        return new Request<>(Registry.get(AGREEMENT_SERVICE_KEY, AgreementService.class).delete(assignorFederalId, id));
     }
 }
