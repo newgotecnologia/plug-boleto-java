@@ -4,6 +4,7 @@ import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateAgreementResponse extends Response<CreateAgreementResponse.CreateAgreementResponseData> {
     public CreateAgreementResponse(ResponseStatus status, String message, CreateAgreementResponseData data) {
         super(status, message, data);
