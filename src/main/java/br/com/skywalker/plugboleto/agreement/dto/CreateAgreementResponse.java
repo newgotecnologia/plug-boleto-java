@@ -27,6 +27,7 @@ public class CreateAgreementResponse extends Response<CreateAgreementResponse.Cr
     @AllArgsConstructor
     @NoArgsConstructor
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CreateAgreementResponseData {
         @JsonProperty("id")
         private long id;
