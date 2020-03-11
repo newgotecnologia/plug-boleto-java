@@ -2,6 +2,7 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,38 +23,31 @@ public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
     @JsonProperty("_falha")
     private List<CreateBankSlipResponseError> errors;
 
-    public CreateBankSlipResponse(ResponseStatus status, String message, CreateBankSlipResponse data) {
-        super(status, message, data);
+    @Getter
+    @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class CreateBankSlipResponseSuccess {
+        @JsonProperty("idintegracao")
+        private String idIntegration;
+
+        @JsonProperty("situacao")
+        private String situation;
+
+        @JsonProperty("TituloNumeroDocumento")
+        private String titleDocumentNumber;
+
+        @JsonProperty("TituloNossoNumero")
+        private String titleOurNumber;
+
+        @JsonProperty("CedenteContaCodigoBanco")
+        private String assignorBankAccountCode;
+
+        @JsonProperty("CedenteContaNumero")
+        private String assignorAccountNumber;
+
+        @JsonProperty("CedenteConvenioNumero")
+        private String assignorAgreementNumber;
     }
-}
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-class CreateBankSlipResponseSuccess {
-    @JsonProperty("idintegracao")
-    private String idIntegration;
-
-    @JsonProperty("situacao")
-    private String situation;
-
-    @JsonProperty("TituloNumeroDocumento")
-    private String titleDocumentNumber;
-
-    @JsonProperty("TituloNossoNumero")
-    private String titleOurNumber;
-
-    @JsonProperty("CedenteContaCodigoBanco")
-    private String assignorBankAccountCode;
-
-    @JsonProperty("CedenteContaNumero")
-    private String assignorAccountNumber;
-
-    @JsonProperty("CedenteConvenioNumero")
-    private String assignorAgreementNumber;
-}
 
 /*
     "idintegracao": "H1-vGuYDul",
@@ -65,34 +59,32 @@ class CreateBankSlipResponseSuccess {
     "CedenteConvenioNumero": "321"
 */
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+    @Getter
+    @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class CreateBankSlipResponseError {
+        @JsonProperty("_status_http")
+        private long httpStatus;
 
-class CreateBankSlipResponseError {
-    @JsonProperty("_status_http")
-    private long httpStatus;
+        @JsonProperty("_erro")
+        private Error error;
 
-    @JsonProperty("_erro")
-    private Error error;
+        @JsonProperty("_dados")
+        private CreateBankSlipRequest data;
+    }
 
-    @JsonProperty("_dados")
-    private CreateBankSlipRequest data;
+    @Getter
+    @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Error {
+        @JsonProperty("erroValidacao")
+        private boolean validationError;
+
+        @JsonProperty("erros")
+        private Map<String, String> errorDescription;
+    }
 }
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-class Error {
-    @JsonProperty("erroValidacao")
-    private boolean validationError;
-
-    @JsonProperty("erros")
-    private Map<String, String> errorDescription;
-}
 /*
     "_status_http": 400,
     "_erro": {

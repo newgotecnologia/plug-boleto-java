@@ -19,13 +19,8 @@ import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateAgreementResponse extends Response<CreateAgreementResponse.CreateAgreementResponseData> {
-    public CreateAgreementResponse(ResponseStatus status, String message, CreateAgreementResponseData data) {
-        super(status, message, data);
-    }
     @Getter
     @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CreateAgreementResponseData {
