@@ -68,12 +68,10 @@ public class CreateBankSlipRequest {
     private String drawerCellPhone;
 
     @JsonProperty("TituloDataEmissao")
-    @JsonFormat(pattern = DateUtil.DATE_TECNOSPEED_PATTERN)
-    private LocalDate titleIssueDate;
+    private String titleIssueDate;
 
     @JsonProperty("TituloDataVencimento")
-    @JsonFormat(pattern = DateUtil.DATE_TECNOSPEED_PATTERN)
-    private LocalDate titleExpirationDate;
+    private String titleExpirationDate;
 
     @JsonProperty("TituloMensagem01")
     private String titleMessage1;
