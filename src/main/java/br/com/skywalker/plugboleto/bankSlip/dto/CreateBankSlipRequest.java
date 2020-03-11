@@ -5,10 +5,7 @@ import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 import retrofit2.Call;
 
@@ -17,6 +14,8 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateBankSlipRequest {
     @JsonProperty("CedenteContaNumero")
