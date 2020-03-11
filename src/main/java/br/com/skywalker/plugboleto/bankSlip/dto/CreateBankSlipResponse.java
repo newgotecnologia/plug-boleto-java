@@ -16,7 +16,7 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
+public class CreateBankSlipResponse extends Response<CreateBankSlipResponse.CreateBankSlipResponseData> {
 
     @Getter
     @Setter
