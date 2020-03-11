@@ -17,37 +17,42 @@ import java.util.Map;
 @NoArgsConstructor
 
 public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
-    @JsonProperty("_sucesso")
-    private List<CreateBankSlipResponseSuccess> success;
-
-    @JsonProperty("_falha")
-    private List<CreateBankSlipResponseError> errors;
 
     @Getter
     @Setter
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class CreateBankSlipResponseSuccess {
-        @JsonProperty("idintegracao")
-        private String idIntegration;
+    public static class CreateBankSlipResponseData {
+        @JsonProperty("_sucesso")
+        private List<CreateBankSlipResponseSuccess> success;
 
-        @JsonProperty("situacao")
-        private String situation;
+        @JsonProperty("_falha")
+        private List<CreateBankSlipResponseError> errors;
 
-        @JsonProperty("TituloNumeroDocumento")
-        private String titleDocumentNumber;
+        @Getter
+        @Setter
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class CreateBankSlipResponseSuccess {
+            @JsonProperty("idintegracao")
+            private String idIntegration;
 
-        @JsonProperty("TituloNossoNumero")
-        private String titleOurNumber;
+            @JsonProperty("situacao")
+            private String situation;
 
-        @JsonProperty("CedenteContaCodigoBanco")
-        private String assignorBankAccountCode;
+            @JsonProperty("TituloNumeroDocumento")
+            private String titleDocumentNumber;
 
-        @JsonProperty("CedenteContaNumero")
-        private String assignorAccountNumber;
+            @JsonProperty("TituloNossoNumero")
+            private String titleOurNumber;
 
-        @JsonProperty("CedenteConvenioNumero")
-        private String assignorAgreementNumber;
-    }
+            @JsonProperty("CedenteContaCodigoBanco")
+            private String assignorBankAccountCode;
+
+            @JsonProperty("CedenteContaNumero")
+            private String assignorAccountNumber;
+
+            @JsonProperty("CedenteConvenioNumero")
+            private String assignorAgreementNumber;
+        }
 
 /*
     "idintegracao": "H1-vGuYDul",
@@ -59,29 +64,30 @@ public class CreateBankSlipResponse extends Response<CreateBankSlipResponse> {
     "CedenteConvenioNumero": "321"
 */
 
-    @Getter
-    @Setter
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class CreateBankSlipResponseError {
-        @JsonProperty("_status_http")
-        private long httpStatus;
+        @Getter
+        @Setter
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class CreateBankSlipResponseError {
+            @JsonProperty("_status_http")
+            private long httpStatus;
 
-        @JsonProperty("_erro")
-        private Error error;
+            @JsonProperty("_erro")
+            private Error error;
 
-        @JsonProperty("_dados")
-        private CreateBankSlipRequest data;
-    }
+            @JsonProperty("_dados")
+            private CreateBankSlipRequest data;
+        }
 
-    @Getter
-    @Setter
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Error {
-        @JsonProperty("erroValidacao")
-        private boolean validationError;
+        @Getter
+        @Setter
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class Error {
+            @JsonProperty("erroValidacao")
+            private boolean validationError;
 
-        @JsonProperty("erros")
-        private Map<String, String> errorDescription;
+            @JsonProperty("erros")
+            private Map<String, String> errorDescription;
+        }
     }
 }
 
