@@ -2,6 +2,7 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,19 +14,21 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PrintBankSlipResponse extends Response<PrintBankSlipResponse.PrintBankSlipResponseData> {
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class PrintBankSlipResponseData{
+        @JsonProperty("situacao")
+        private String situation;
 
-public class PrintBankSlipResponse extends Response<PrintBankSlipResponse> {
-    @JsonProperty("situacao")
-    private String situation;
+        @JsonProperty("protocolo")
+        private String protocol;
 
-    @JsonProperty("protocolo")
-    private String protocol;
-
-    @JsonProperty("boletos")
-    private List<String> bankSlipIntegrationIds;
-
-    public PrintBankSlipResponse(ResponseStatus status, String message, PrintBankSlipResponse data) {
-        super(status, message, data);
+        @JsonProperty("boletos")
+        private List<String> bankSlipIntegrationIds;
     }
 }
 
