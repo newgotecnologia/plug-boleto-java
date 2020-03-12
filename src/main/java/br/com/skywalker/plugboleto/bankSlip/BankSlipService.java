@@ -1,6 +1,7 @@
 package br.com.skywalker.plugboleto.bankSlip;
 
 import br.com.skywalker.plugboleto.bankSlip.dto.*;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -36,5 +37,5 @@ public interface BankSlipService {
 
     // Here we return object because the API return a JSON with the request status or the PDF ot self
     @GET(Endpoints.BASE + "/impressao/lote/{protocol}")
-    Call<Object> pdfRequestStatus(@Path("protocol") String protocol, @Header("cnpj-cedente") String assignorFederalId);
+    Call<ResponseBody> pdfRequestStatus(@Path("protocol") String protocol, @Header("cnpj-cedente") String assignorFederalId);
 }

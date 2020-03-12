@@ -3,6 +3,7 @@ package br.com.skywalker.plugboleto.bankSlip;
 import br.com.skywalker.plugboleto.Registry;
 import br.com.skywalker.plugboleto.bankSlip.dto.*;
 import br.com.skywalker.plugboleto.common.Request;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class BankSlipResource {
         return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequest(request, assignorFederalId));
     }
 
-    public Request<Object> pdfRequestStatus(String protocol, String assignorFederalId) {
+    public Request<ResponseBody> pdfRequestStatus(String protocol, String assignorFederalId) {
         return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequestStatus(protocol, assignorFederalId));
     }
 
