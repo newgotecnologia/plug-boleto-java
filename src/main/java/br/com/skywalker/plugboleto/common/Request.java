@@ -1,5 +1,7 @@
 package br.com.skywalker.plugboleto.common;
 
+import br.com.skywalker.plugboleto.exception.ConvertionException;
+import br.com.skywalker.plugboleto.exception.RequestFailed;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -12,7 +14,7 @@ public class Request<T> {
 
     private final Call<T> call;
 
-    public T execute() {
+    public T execute() throws RequestFailed, ConvertionException {
         try {
             return convertResponse(call.execute());
         } catch (IOException ex) {
@@ -24,7 +26,11 @@ public class Request<T> {
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
-                callback.onSuccess(convertResponse(response));
+                try {
+                    callback.onSuccess(convertResponse(response));
+                } catch (RequestFailed | ConvertionException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -38,18 +44,21 @@ public class Request<T> {
         call.cancel();
     }
 
-    protected T convertResponse(Response<T> response) {
+    protected T convertResponse(Response<T> response) throws RequestFailed, ConvertionException {
         if (response.isSuccessful()) {
             return response.body();
         }
 
-        if(response.errorBody() == null)
-            throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + " => without response body");
-        else {
+        if(response.errorBody() == null) {
+            throw new RequestFailed("Response wasn't successful, HTTP Error: " + response.code() +  " => without response body");
+//            throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + " => without response body");
+        }else {
             try {
-                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n" + response.errorBody().string());
-            } catch (IOException e){
-                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n => can't show the response body");
+                return response.body();
+//                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n" + response.errorBody().string());
+            } catch (Exception e){
+                throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
+//                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n => can't show the response body");
             }
         }
     }
