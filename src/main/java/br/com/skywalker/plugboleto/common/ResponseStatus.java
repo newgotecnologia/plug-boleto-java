@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ResponseStatus {
-    SUCCESS();
+    SUCCESS(),
+    ERROR();
 
     private static Map<String, ResponseStatus> SERIALIZATION_MAP = new HashMap<>();
 
     static {
         SERIALIZATION_MAP.put("sucesso", SUCCESS);
+        SERIALIZATION_MAP.put("erro", ERROR);
     }
 
     @JsonCreator
