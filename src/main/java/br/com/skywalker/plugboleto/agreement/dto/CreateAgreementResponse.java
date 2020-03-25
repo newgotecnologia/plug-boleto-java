@@ -57,8 +57,11 @@ public class CreateAgreementResponse extends Response<CreateAgreementResponse.Cr
         @JsonProperty("numero_remessa")
         private String agreementShipmentNumber;
 
+        @JsonProperty("_campo")
+        private String errorField;
+
         @JsonProperty("_erro")
-        private String error;
+        private String errorMessage;
 
         public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
         public LocalDateTime getLastUpdate(){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }

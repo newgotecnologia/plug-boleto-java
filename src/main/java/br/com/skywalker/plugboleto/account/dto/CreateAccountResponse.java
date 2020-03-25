@@ -65,6 +65,12 @@ public class CreateAccountResponse extends Response<CreateAccountResponse.Create
         @JsonProperty("convenios")
         private List<ListedAgreement> agreements;
 
+        @JsonProperty("_campo")
+        private String errorField;
+
+        @JsonProperty("_erro")
+        private String errorMessage;
+
         public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
         public LocalDateTime getLastUpdate(){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
     }

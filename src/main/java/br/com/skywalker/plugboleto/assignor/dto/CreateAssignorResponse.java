@@ -110,6 +110,12 @@ public class CreateAssignorResponse extends Response<CreateAssignorResponse.Crea
         @JsonProperty("cidade")
         private String addressCity;
 
+        @JsonProperty("_campo")
+        private String errorField;
+
+        @JsonProperty("_erro")
+        private String errorMessage;
+
         public LocalDateTime getCreationDate(){ return DateUtil.fromStringToLocalDateTime(this.creationDate); }
         public LocalDateTime getLastUpdate(String date){ return DateUtil.fromStringToLocalDateTime(this.lastUpdate); }
         public LocalDateTime getInactivationDate(String date){ return DateUtil.fromStringToLocalDateTime(this.inactivationDate); }
