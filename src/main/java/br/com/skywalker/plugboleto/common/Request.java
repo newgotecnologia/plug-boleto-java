@@ -2,6 +2,7 @@ package br.com.skywalker.plugboleto.common;
 
 import br.com.skywalker.plugboleto.exception.ConvertionException;
 import br.com.skywalker.plugboleto.exception.RequestFailed;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,7 +55,8 @@ public class Request<T> {
 //            throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + " => without response body");
         }else {
             try {
-                return response.body();
+                Class a = response.body().getClass();
+                return (T) new ObjectMapper().readValue(response.errorBody().string(), a);
 //                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n" + response.errorBody().string());
             } catch (Exception e){
                 throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
