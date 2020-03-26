@@ -34,7 +34,7 @@ public class AssignorResourceTest {
 
     @Test
     public void whenListingAssignors_shouldDeserializeCorrectly() throws RequestFailed, ConvertionException {
-        AssignorPagedResponse assignors = assignorResource.findAll().execute();
+        AssignorPagedResponse assignors = assignorResource.findAll().execute(AssignorPagedResponse.class);
         assertNotNull(assignors);
         System.out.println(assignors.getData().get(0).getAddress().getStreet());
     }

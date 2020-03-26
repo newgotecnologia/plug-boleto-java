@@ -15,20 +15,20 @@ public class Request<T> {
 
     private final Call<T> call;
 
-    public T execute() throws RequestFailed, ConvertionException {
+    public T execute(Class<T> type) throws RequestFailed, ConvertionException {
         try {
-            return convertResponse(call.execute());
+            return convertResponse(call.execute(), type);
         } catch (IOException ex) {
             throw new RuntimeException(ex.getMessage());
         }
     }
 
-    public void enqueue(RequestCallback<T> callback) {
+    public void enqueue(RequestCallback<T> callback, Class<T> type) {
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
                 try {
-                    callback.onSuccess(convertResponse(response));
+                    callback.onSuccess(convertResponse(response, type));
                 } catch (RequestFailed | ConvertionException e) {
                     e.printStackTrace();
                 }
@@ -45,7 +45,7 @@ public class Request<T> {
         call.cancel();
     }
 
-    protected T convertResponse(Response<T> response) throws RequestFailed, ConvertionException {
+    protected T convertResponse(Response<T> response, Class<T> type) throws RequestFailed, ConvertionException {
         if (response.isSuccessful()) {
             return response.body();
         }
@@ -54,8 +54,7 @@ public class Request<T> {
             throw new RequestFailed("Response wasn't successful, HTTP Error: " + response.code() +  " => without response body");
         }else {
             try {
-                Class a = response.body().getClass();
-                return (T) new ObjectMapper().readValue(response.errorBody().string(), a);
+                return new ObjectMapper().readValue(response.errorBody().string(), type);
             } catch (Exception e){
                 e.printStackTrace();
                 throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
