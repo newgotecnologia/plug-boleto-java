@@ -52,15 +52,13 @@ public class Request<T> {
 
         if(response.errorBody() == null) {
             throw new RequestFailed("Response wasn't successful, HTTP Error: " + response.code() +  " => without response body");
-//            throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + " => without response body");
         }else {
             try {
                 Class a = response.body().getClass();
                 return (T) new ObjectMapper().readValue(response.errorBody().string(), a);
-//                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n" + response.errorBody().string());
             } catch (Exception e){
+                e.printStackTrace();
                 throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
-//                throw new RuntimeException("Response wasn't successful, HTTP Erros: " + response.code() + "\n => can't show the response body");
             }
         }
     }
