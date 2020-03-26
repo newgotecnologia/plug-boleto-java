@@ -2,6 +2,8 @@ package br.com.skywalker.plugboleto.common;
 
 import br.com.skywalker.plugboleto.exception.ConvertionException;
 import br.com.skywalker.plugboleto.exception.RequestFailed;
+import br.com.skywalker.plugboleto.exception.ValidationException;
+import br.com.skywalker.plugboleto.util.GenericErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Call;
@@ -15,20 +17,20 @@ public class Request<T> {
 
     private final Call<T> call;
 
-    public T execute(Class<T> type) throws RequestFailed, ConvertionException {
+    public T execute() throws RequestFailed, ConvertionException {
         try {
-            return convertResponse(call.execute(), type);
+            return convertResponse(call.execute());
         } catch (IOException ex) {
             throw new RuntimeException(ex.getMessage());
         }
     }
 
-    public void enqueue(RequestCallback<T> callback, Class<T> type) {
+    public void enqueue(RequestCallback<T> callback) {
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
                 try {
-                    callback.onSuccess(convertResponse(response, type));
+                    callback.onSuccess(convertResponse(response));
                 } catch (RequestFailed | ConvertionException e) {
                     e.printStackTrace();
                 }
@@ -45,7 +47,7 @@ public class Request<T> {
         call.cancel();
     }
 
-    protected T convertResponse(Response<T> response, Class<T> type) throws RequestFailed, ConvertionException {
+    protected T convertResponse(Response<T> response) throws RequestFailed, ConvertionException {
         if (response.isSuccessful()) {
             return response.body();
         }
@@ -54,7 +56,7 @@ public class Request<T> {
             throw new RequestFailed("Response wasn't successful, HTTP Error: " + response.code() +  " => without response body");
         }else {
             try {
-                return new ObjectMapper().readValue(response.errorBody().string(), type);
+                throw new ValidationException("There is a validation error in your request", new ObjectMapper().readValue(response.errorBody().string(), GenericErrorResponse.class));
             } catch (Exception e){
                 e.printStackTrace();
                 throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
