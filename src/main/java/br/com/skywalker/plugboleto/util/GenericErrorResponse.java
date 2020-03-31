@@ -23,6 +23,15 @@ public class GenericErrorResponse {
     @JsonProperty("_dados")
     private List<GenericErrorResponseData> data;
 
+    public String getErrorMessages(){
+        StringBuilder messages = new StringBuilder();
+        for(GenericErrorResponseData data : this.data){
+            messages.append(data.errorMessage).append("\n");
+        }
+
+        return messages.toString();
+    }
+
     @Getter
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
