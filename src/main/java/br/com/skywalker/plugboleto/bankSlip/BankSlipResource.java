@@ -3,9 +3,17 @@ package br.com.skywalker.plugboleto.bankSlip;
 import br.com.skywalker.plugboleto.Registry;
 import br.com.skywalker.plugboleto.bankSlip.dto.*;
 import br.com.skywalker.plugboleto.common.Request;
+import br.com.skywalker.plugboleto.exception.ConvertionException;
+import br.com.skywalker.plugboleto.exception.RequestFailed;
+import br.com.skywalker.plugboleto.exception.ValidationException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
+import java.io.IOException;
 import java.util.List;
 
 public class BankSlipResource {
@@ -47,12 +55,40 @@ public class BankSlipResource {
         return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).requestOutgoingShippingFileStatus(protocol, assignorFederalId));
     }
 
-    public Request<PrintBankSlipResponse> pdfRequest(PrintBankSlipRequest request, String assignorFederalId) {
-        return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequest(request, assignorFederalId));
+    public Object pdfRequest(PrintBankSlipRequest request, String assignorFederalId) {
+        ObjectMapper mapper = new ObjectMapper();
+        Request<ResponseBody> pdfRequest = new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequest(request, assignorFederalId));
+        try {
+            ResponseBody response = pdfRequest.execute();
+            try {
+                PrintBankSlipResponse printBankSlipResponse = mapper.readValue(response.string(), PrintBankSlipResponse.class);
+                if(printBankSlipResponse.getData() instanceof List)
+                    return null;
+                else
+                    return printBankSlipResponse;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
-    public Request<ResponseBody> pdfRequestStatus(String protocol, String assignorFederalId) {
-        return new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequestStatus(protocol, assignorFederalId));
+    public byte[] pdfRequestStatus(String protocol, String assignorFederalId) {
+        try {
+            ResponseBody responseBody = new Request<>(Registry.get(ACCOUNT_SERVICE_KEY, BankSlipService.class).pdfRequestStatus(protocol, assignorFederalId)).execute();
+            if (responseBody.contentType().toString().equals("application/pdf")) {
+                return responseBody.bytes();
+            } else {
+                return null;
+            }
+        } catch (RequestFailed | ConvertionException | IOException | ValidationException requestFailed) {
+            requestFailed.printStackTrace();
+        }
+
+        return null;
     }
 
     public Request delete(List<String> integrationIds, String assignorFederalId) {

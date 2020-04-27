@@ -30,6 +30,9 @@ public class CreateAgreementRequest {
     @JsonProperty("ConvenioNumeroRemessa")
     private String agreementShipmentNumber;
 
+    @JsonProperty("ConvenioDensidaDeRemessa")
+    private String agreementShipmentDensity;
+
     @JsonProperty("ConvenioReiniciarDiariamente")
     private boolean agreementDailyReset;
 

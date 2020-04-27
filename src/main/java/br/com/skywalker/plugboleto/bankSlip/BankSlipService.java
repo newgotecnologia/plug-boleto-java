@@ -33,7 +33,7 @@ public interface BankSlipService {
     Call<BankSlipPagedResponse> findByIntegrationId(@Path("integrationId") String integrationId, @Header("cnpj-cedente") String assignorFederalId);
 
     @POST(Endpoints.BASE + "/impressao/lote")
-    Call<PrintBankSlipResponse> pdfRequest(@Body PrintBankSlipRequest body, @Header("cnpj-cedente") String assignorFederalId);
+    Call<ResponseBody> pdfRequest(@Body PrintBankSlipRequest body, @Header("cnpj-cedente") String assignorFederalId);
 
     // Here we return object because the API return a JSON with the request status or the PDF ot self
     @GET(Endpoints.BASE + "/impressao/lote/{protocol}")

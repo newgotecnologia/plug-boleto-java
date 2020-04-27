@@ -57,8 +57,9 @@ public class Request<T> {
             throw new RequestFailed("Response wasn't successful, HTTP Error: " + response.code() + " => without response body");
         } else {
             try {
+                System.out.println(response.errorBody().string());
                 throw new ValidationException("There is a validation error in your request", new ObjectMapper().readValue(response.errorBody().string(), GenericErrorResponse.class));
-            } catch (IOException parseException ) {
+            } catch (IOException parseException) {
                 parseException.printStackTrace();
                 throw new ConvertionException("Response wasn't successful, HTTP Error: " + response.code() + " => can't convert the response body");
             }
