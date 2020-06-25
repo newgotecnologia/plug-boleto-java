@@ -29,8 +29,8 @@ public interface BankSlipService {
     @GET(Endpoints.BASE + "/baixa/lote/{protocol}")
     Call<ShippingFileResponse> requestOutgoingShippingFileStatus(@Path("protocol") String protocol, @Header("cnpj-cedente") String assignorFederalId);
 
-    @GET(Endpoints.BASE + "?IdIntegracao={integrationId}")
-    Call<BankSlipPagedResponse> findByIntegrationId(@Path("integrationId") String integrationId, @Header("cnpj-cedente") String assignorFederalId);
+    @GET(Endpoints.BASE)
+    Call<BankSlipPagedResponse> findByIntegrationId(@Query("idintegracao") String integrationId, @Header("cnpj-cedente") String assignorFederalId);
 
     @POST(Endpoints.BASE + "/impressao/lote")
     Call<ResponseBody> pdfRequest(@Body PrintBankSlipRequest body, @Header("cnpj-cedente") String assignorFederalId);

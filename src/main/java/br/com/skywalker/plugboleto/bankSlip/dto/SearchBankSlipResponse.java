@@ -3,6 +3,7 @@ package br.com.skywalker.plugboleto.bankSlip.dto;
 import br.com.skywalker.plugboleto.common.PagedResponse;
 import br.com.skywalker.plugboleto.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,8 @@ import java.util.function.Function;
 
 @Getter
 @Setter
-
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse> {
     @JsonProperty("IdIntegracao")
     private String integrationId;

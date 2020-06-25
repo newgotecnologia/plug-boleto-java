@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface ShipmentService {
     @POST(Endpoints.BASE + "/lote")
-    Call<GenerateShipmentResponse> sendEmail(@Body List<String> integrationIds, @Header("cnpj-cedente") String assignorFederalId);
+    Call<GenerateShipmentResponse> generateShipmentFile(@Body List<String> integrationIds, @Header("cnpj-cedente") String assignorFederalId);
 }

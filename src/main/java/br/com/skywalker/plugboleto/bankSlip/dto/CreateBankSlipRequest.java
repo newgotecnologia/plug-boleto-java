@@ -95,6 +95,12 @@ public class CreateBankSlipRequest {
 
     @JsonProperty("TituloLocalPagamento")
     private String titlePaymentLocation;
+
+    @JsonProperty("TituloCodBaixaDevolucao")
+    private String titleReturnWriteOffCode;
+
+    @JsonProperty("TituloPrazoBaixa")
+    private String titleTermWriteOff;
 }
 
 /*

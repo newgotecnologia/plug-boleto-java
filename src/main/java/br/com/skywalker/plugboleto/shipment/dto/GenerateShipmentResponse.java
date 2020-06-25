@@ -2,6 +2,7 @@ package br.com.skywalker.plugboleto.shipment.dto;
 
 import br.com.skywalker.plugboleto.common.Response;
 import br.com.skywalker.plugboleto.common.ResponseStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,80 +14,79 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class GenerateShipmentResponse extends Response<GenerateShipmentResponse.GenerateShipmentResponseData> {
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class GenerateShipmentResponseData {
+        @JsonProperty("_sucesso")
+        private List<GenerateShipmentSuccessResponse> successes;
 
-public class GenerateShipmentResponse extends Response<GenerateShipmentResponse> {
-    @JsonProperty("_sucesso")
-    private List<GenerateShipmentSuccessResponse> successes;
+        @JsonProperty("_falha")
+        private List<GenerateShipmentFailureResponse> failures;
 
-    @JsonProperty("_falha")
-    private List<GenerateShipmentFailureResponse> failures;
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class GenerateShipmentSuccessResponse {
+            @JsonProperty("CedenteContaCodigoBanco")
+            private String assignorAccountBankCode;
 
-    public GenerateShipmentResponse(ResponseStatus status, String message, GenerateShipmentResponse data) {
-        super(status, message, data);
+            @JsonProperty("CedenteContaNumero")
+            private String assignorAccountNumber;
+
+            @JsonProperty("CedenteConvenioNumero")
+            private String assignorAgreementNumber;
+
+            @JsonProperty("arquivo")
+            private String archive;
+
+            @JsonProperty("situacao")
+            private String situation;
+
+            @JsonProperty("transmissaoAutomatica")
+            private String automaticTransmission;
+
+            @JsonProperty("remessa")
+            private byte[] shipment;
+
+            @JsonProperty("mensagem")
+            private String message;
+
+            @JsonProperty("numero")
+            private long number;
+
+            @JsonProperty("titulos")
+            private List<GenerateShipmentSuccessTitleResponse> titles;
+        }
+
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class GenerateShipmentSuccessTitleResponse {
+            @JsonProperty("idintegracao")
+            private String integrationId;
+        }
+
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class GenerateShipmentFailureResponse {
+            @JsonProperty("idintegracao")
+            private String integrationId;
+
+            @JsonProperty("_erro")
+            private String error;
+
+            @JsonProperty("_status_http")
+            private String httpStatus;
+        }
     }
-}
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-class GenerateShipmentSuccessResponse {
-    @JsonProperty("CedenteContaCodigoBanco")
-    private String assignorAccountBankCode;
-
-    @JsonProperty("CedenteContaNumero")
-    private String assignorAccountNumber;
-
-    @JsonProperty("CedenteConvenioNumero")
-    private String assignorAgreementNumber;
-
-    @JsonProperty("arquivo")
-    private String archive;
-
-    @JsonProperty("situacao")
-    private String situation;
-
-    @JsonProperty("transmissaoAutomatica")
-    private String automaticTransmission;
-
-    @JsonProperty("remessa")
-    private byte[] shipment;
-
-    @JsonProperty("mensagem")
-    private String message;
-
-    @JsonProperty("numero")
-    private long number;
-
-    @JsonProperty("titulos")
-    private GenerateShipmentSuccessTitleResponse titles;
-}
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-class GenerateShipmentSuccessTitleResponse {
-    @JsonProperty("idintegracao")
-    private String integrationId;
-}
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-class GenerateShipmentFailureResponse {
-    @JsonProperty("idintegracao")
-    private String integrationId;
-
-    @JsonProperty("_erro")
-    private String error;
-
-    @JsonProperty("_status_http")
-    private String httpStatus;
 }
 
 /*

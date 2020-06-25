@@ -14,7 +14,7 @@ public class ShipmentResource {
         Registry.set(SHIPMENT_SERVICE_KEY, retrofit.create(ShipmentService.class));
     }
 
-    public Request<GenerateShipmentResponse> sendEmail(List<String> integrationIds, String assignorFederalId) {
-        return new Request<>(Registry.get(SHIPMENT_SERVICE_KEY, ShipmentService.class).sendEmail(integrationIds, assignorFederalId));
+    public Request<GenerateShipmentResponse> generateShipmentFile(List<String> integrationIds, String assignorFederalId) {
+        return new Request<>(Registry.get(SHIPMENT_SERVICE_KEY, ShipmentService.class).generateShipmentFile(integrationIds, assignorFederalId));
     }
 }

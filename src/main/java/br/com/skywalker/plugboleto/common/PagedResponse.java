@@ -1,16 +1,23 @@
 package br.com.skywalker.plugboleto.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import retrofit2.Call;
 
 import java.util.List;
 import java.util.function.Function;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PagedResponse<T> extends Response<List<T>> {
 
-    private final Function<String, Call<? extends PagedResponse<T>>> pageProvider;
+    private Function<String, Call<? extends PagedResponse<T>>> pageProvider;
 
     @Getter
     @JsonProperty("_meta")

@@ -7,6 +7,7 @@ import br.com.skywalker.plugboleto.util.GenericErrorResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +33,7 @@ public class Request<T> {
             public void onResponse(Call<T> call, Response<T> response) {
                 try {
                     callback.onSuccess(convertResponse(response));
-                } catch (RequestFailed | ConvertionException | ValidationException e) {
+                } catch (RequestFailed | ConvertionException | ValidationException | IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -48,7 +49,8 @@ public class Request<T> {
         call.cancel();
     }
 
-    protected T convertResponse(Response<T> response) throws RequestFailed, ConvertionException, ValidationException {
+    protected T convertResponse(Response<T> response) throws RequestFailed, ConvertionException, ValidationException, IOException {
+
         if (response.isSuccessful()) {
             return response.body();
         }
