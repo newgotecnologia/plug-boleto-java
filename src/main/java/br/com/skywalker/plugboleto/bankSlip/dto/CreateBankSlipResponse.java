@@ -44,6 +44,9 @@ public class CreateBankSlipResponse extends Response<CreateBankSlipResponse.Crea
             @JsonProperty("TituloNossoNumero")
             private String titleOurNumber;
 
+            @JsonProperty("TituloDocEspecie")
+            private String titleDocType;
+
             @JsonProperty("CedenteContaCodigoBanco")
             private String assignorBankAccountCode;
 

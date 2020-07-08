@@ -87,6 +87,9 @@ public class CreateBankSlipRequest {
     @JsonProperty("TituloNossoNumero")
     private String titleOurNumber;
 
+    @JsonProperty("TituloDocEspecie")
+    private String titleDocType;
+
     @JsonProperty("TituloNumeroDocumento")
     private String titleDocumentNumber;
 
