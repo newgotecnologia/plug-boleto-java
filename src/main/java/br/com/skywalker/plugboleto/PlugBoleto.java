@@ -1,6 +1,12 @@
 package br.com.skywalker.plugboleto;
 
+import br.com.skywalker.plugboleto.account.AccountResource;
+import br.com.skywalker.plugboleto.agreement.AgreementResource;
 import br.com.skywalker.plugboleto.assignor.AssignorResource;
+import br.com.skywalker.plugboleto.bankSlip.BankSlipResource;
+import br.com.skywalker.plugboleto.bankSlipEmail.BankSlipEmailResource;
+import br.com.skywalker.plugboleto.returns.ReturnResource;
+import br.com.skywalker.plugboleto.shipment.ShipmentResource;
 
 public abstract class PlugBoleto {
     private static final String SH_CNPJ_ENV_VAR_NAME = "PB_SH_CNPJ";
@@ -43,5 +49,11 @@ public abstract class PlugBoleto {
     // *****************************************************************************
 
     public abstract AssignorResource assignors();
+    public abstract AccountResource accounts();
+    public abstract AgreementResource agreements();
+    public abstract BankSlipResource bankSlips();
+    public abstract BankSlipEmailResource bankSlipEmails();
+    public abstract ReturnResource returns();
+    public abstract ShipmentResource shipments();
 
 }

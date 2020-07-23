@@ -2,9 +2,15 @@ package br.com.skywalker.plugboleto.assignor.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ListedAssignor {
@@ -59,23 +65,26 @@ public class ListedAssignor {
         private Long cityId;
         Address() {}
     }
-//              "telefone": "9999999999",
-//              "email": "emaildetestes@gmail.com",
-//              "criado": "2019-12-27T12:17:01.000Z",
-//              "atualizado": "2019-12-27T12:17:01.000Z",
-//              "token_cedente": "71117fdc8a55f61b41580edbe46a8426",
-//              "token_esales": "0",
-//              "situacao": "ATIVO",
-//              "id_software_house": 23,
-//              "config_email": null,
-//              "config_notificacao": null,
-//              "motivo_inativacao": null,
-//              "data_ativacao": "2019-12-27T12:17:01.000Z",
-//              "data_inativacao": null,
-//              "certificado": null,
-//              "dtvencimentocertificado": null,
-//              "config_webhook": null,
-//              "linha_digitavel_recibo": null,
-//              "token_intermediadora": null,
-//              "uf": "MG",
 }
+
+/*
+    "telefone": "9999999999",
+    "email": "emaildetestes@gmail.com",
+    "criado": "2019-12-27T12:17:01.000Z",
+    "atualizado": "2019-12-27T12:17:01.000Z",
+    "token_cedente": "71117fdc8a55f61b41580edbe46a8426",
+    "token_esales": "0",
+    "situacao": "ATIVO",
+    "id_software_house": 23,
+    "config_email": null,
+    "config_notificacao": null,
+    "motivo_inativacao": null,
+    "data_ativacao": "2019-12-27T12:17:01.000Z",
+    "data_inativacao": null,
+    "certificado": null,
+    "dtvencimentocertificado": null,
+    "config_webhook": null,
+    "linha_digitavel_recibo": null,
+    "token_intermediadora": null,
+    "uf": "MG",
+*/

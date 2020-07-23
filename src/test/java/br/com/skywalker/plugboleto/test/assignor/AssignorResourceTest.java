@@ -4,6 +4,9 @@ import br.com.skywalker.plugboleto.PlugBoleto;
 import br.com.skywalker.plugboleto.assignor.AssignorPagedResponse;
 import br.com.skywalker.plugboleto.assignor.AssignorResource;
 import br.com.skywalker.plugboleto.common.Request;
+import br.com.skywalker.plugboleto.exception.ConvertionException;
+import br.com.skywalker.plugboleto.exception.RequestFailed;
+import br.com.skywalker.plugboleto.exception.ValidationException;
 import br.com.skywalker.plugboleto.test.Utils;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -31,7 +34,7 @@ public class AssignorResourceTest {
     }
 
     @Test
-    public void whenListingAssignors_shouldDeserializeCorrectly() throws IOException {
+    public void whenListingAssignors_shouldDeserializeCorrectly() throws RequestFailed, ConvertionException, ValidationException {
         AssignorPagedResponse assignors = assignorResource.findAll().execute();
         assertNotNull(assignors);
         System.out.println(assignors.getData().get(0).getAddress().getStreet());

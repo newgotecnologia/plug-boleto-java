@@ -1,16 +1,20 @@
 package br.com.skywalker.plugboleto.assignor;
 
+import br.com.skywalker.plugboleto.assignor.dto.CreateAssignorRequest;
+import br.com.skywalker.plugboleto.assignor.dto.CreateAssignorResponse;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
+import retrofit2.http.*;
 
 interface AssignorService {
-
     @GET(Endpoints.BASE)
     Call<AssignorPagedResponse> findAll();
-    @POST("/")
-    Call<AssignorPagedResponse> sendSomething(@Body Object a, @Header("X-Auth") String asd);
 
+    @GET(Endpoints.BASE + "/{id}")
+    Call<AssignorPagedResponse> findById(@Path("id") long id);
+
+    @POST(Endpoints.BASE)
+    Call<CreateAssignorResponse> create(@Body CreateAssignorRequest body);
+
+    @PUT(Endpoints.BASE + "/{id}")
+    Call<CreateAssignorResponse> update(@Body CreateAssignorRequest body, @Header("cnpj-cedente") String assignorFederalId, @Path("id") long id);
 }

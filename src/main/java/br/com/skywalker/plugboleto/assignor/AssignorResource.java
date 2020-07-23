@@ -1,6 +1,8 @@
 package br.com.skywalker.plugboleto.assignor;
 
 import br.com.skywalker.plugboleto.Registry;
+import br.com.skywalker.plugboleto.assignor.dto.CreateAssignorRequest;
+import br.com.skywalker.plugboleto.assignor.dto.CreateAssignorResponse;
 import br.com.skywalker.plugboleto.common.Request;
 import retrofit2.Retrofit;
 
@@ -20,7 +22,14 @@ public class AssignorResource {
     }
 
     public Request<AssignorPagedResponse> findById(Long id) {
-        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).findAll());
+        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).findById(id));
     }
 
+    public Request<CreateAssignorResponse> create(CreateAssignorRequest request) {
+        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).create(request));
+    }
+
+    public Request<CreateAssignorResponse> update(CreateAssignorRequest request, String assignorFederalId, long id) {
+        return new Request<>(Registry.get(ASSIGNOR_SERVICE_KEY, AssignorService.class).update(request, assignorFederalId, id));
+    }
 }
