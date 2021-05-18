@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import retrofit2.Call;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Function;
 
@@ -206,12 +205,10 @@ class TitleOccurrence {
     private String message;
 
     @JsonProperty("criado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime creationDate;
+    private String creationDate;
 
     @JsonProperty("atualizado")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_OFFSET_ISO_FORMAT)
-    private LocalDateTime lastUpdate;
+    private String lastUpdate;
 }
 
 @Getter
@@ -227,8 +224,7 @@ class TitleMovements {
     private String message;
 
     @JsonProperty("data")
-    @JsonFormat(pattern = DateUtil.DATE_TIME_TECNOSPEED_PATTERN)
-    private LocalDateTime date;
+    private String date;
 
     @JsonProperty("ocorrencias")
     private List<TitleMovementOccurrence> occurrences;
