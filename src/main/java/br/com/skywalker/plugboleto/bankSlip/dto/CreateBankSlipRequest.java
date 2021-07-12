@@ -104,6 +104,9 @@ public class CreateBankSlipRequest {
 
     @JsonProperty("TituloPrazoBaixa")
     private String titleTermWriteOff;
+
+    @JsonProperty("TituloAceite")
+    private String titleAccept;
 }
 
 /*
