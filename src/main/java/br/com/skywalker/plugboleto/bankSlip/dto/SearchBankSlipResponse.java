@@ -196,7 +196,7 @@ public class SearchBankSlipResponse extends PagedResponse<SearchBankSlipResponse
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 class TitleOccurrence {
     @JsonProperty("codigo")
     private String code;
@@ -215,7 +215,7 @@ class TitleOccurrence {
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 class TitleMovements {
     @JsonProperty("codigo")
     private String code;
@@ -234,7 +234,7 @@ class TitleMovements {
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 class TitleMovementOccurrence {
     @JsonProperty("codigo")
     private String code;
