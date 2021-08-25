@@ -101,8 +101,8 @@ public class CreateAssignorResponse extends Response<CreateAssignorResponse.Crea
         @JsonProperty("uf")
         private String addressSate;
 
-        @JsonProperty("contas")
-        private List<String> accounts;
+        // @JsonProperty("contas")
+        // private List<String> accounts;
 
         @JsonProperty("cidadeibge")
         private long addressIBGECode;
