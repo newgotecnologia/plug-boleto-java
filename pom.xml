@@ -6,7 +6,7 @@
 
     <groupId>br.com.newgo</groupId>
     <artifactId>plug-boleto-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>PlugBoleto Java SDK</name>
     <description>A Java client for Tecnospeed's boleto API</description>
